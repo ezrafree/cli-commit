@@ -116,7 +116,7 @@ const runCommit = async (questions) => {
       commitScope: false,
       commitDesc: false,
     });
-    runGitCommands(commitMessage, !!options.noadd, !!options.nopush);
+    runGitCommands(commitMessage, !options.noadd, !options.nopush);
   } else if (questions.length > 0)
     inquirer
       .prompt(questions)

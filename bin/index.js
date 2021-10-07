@@ -71,7 +71,7 @@ const getCommitMessage = (options, answer) => {
     (answer.commitScope || options.scope) +
     "): " +
     (answer.commitDesc || options.desc);
-  if (!options.debug)
+  if (!options.dryrun)
     console.log(
       colors.white.bold("Commit message:"),
       colors.cyan(commitMessage)
@@ -93,10 +93,10 @@ function searchTypes(_answers, input) {
 }
 
 const runGitCommands = async (commitMessage, add, push) => {
-  if (options.debug) {
-    console.log(colors.white.bold("Debug Mode:"));
-    if (add) console.log(colors.cyan("git add -v ."));
-    console.log(colors.cyan("git commit -m '" + commitMessage + "'"));
+  if (options.dryrun) {
+    console.log(colors.white.bold("Dry Run:"));
+    if (add) console.log(colors.cyan("git add -v . && \\"));
+    console.log(colors.cyan("git commit -m '" + commitMessage + "' && \\"));
     if (push) console.log(colors.cyan("git push origin HEAD"));
   } else {
     try {

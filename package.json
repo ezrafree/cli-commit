@@ -1,5 +1,5 @@
 {
-  "name": "commit",
+  "name": "@ezrafree/commit",
   "version": "1.0.0",
   "description": "A simple command line tool.",
   "preferGlobal": true,
@@ -19,5 +19,16 @@
     "inquirer-autocomplete-prompt": "^1.4.0",
     "lodash": "^4.17.21",
     "simple-git": "^2.45.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ezrafree/cli-commit.git"
+  },
+  "keywords": [
+    "one"
+  ],
+  "bugs": {
+    "url": "https://github.com/ezrafree/cli-commit/issues"
+  },
+  "homepage": "https://github.com/ezrafree/cli-commit#readme"
 }

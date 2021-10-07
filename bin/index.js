@@ -109,9 +109,13 @@ const runGitCommands = async (commitMessage, add, push) => {
     if (push) console.log(colors.cyan("git push origin HEAD"));
   } else {
     try {
-      if (add) await git.add(".");
+      if (add)
+        (await git.add(".")) &&
+          console.log(colors.white("Adding files to be tracked..."));
       await git.commit(commitMessage);
-      if (push) await git.push("origin", "HEAD");
+      if (push)
+        (await git.push("origin", "HEAD")) &&
+          console.log(colors.white("Pushing changes to remote..."));
     } catch (e) {
       console.log("error: ", e);
     }

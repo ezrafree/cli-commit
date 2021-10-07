@@ -82,15 +82,16 @@ You can use the `-m` option to specify the commit description.
 
 #### `-na` or `--noadd`
 
-You can use the `-a` flag to not run `git add`
+You can use the `-a` flag to not run `git add`.
 
 #### `-np` or `--nopush`
 
-You can use the `-p` flag to not run `git push`
+You can use the `-p` flag to not run `git push`.
 
-#### `--debug`
+#### `--dryrun` or `-D`
 
-You can use the `--debug` flag to not run any `git` commands and print debug info
+You can use the `--dryrun` flag to not run any `git` commands and print the
+commands that would be run.
 
 #### `--version`
 

@@ -95,9 +95,9 @@ function searchTypes(_answers, input) {
 const runGitCommands = async (commitMessage, add, push) => {
   if (options.debug) {
     console.log(colors.white.bold("Debug Mode:"));
-    console.log(colors.cyan("git add -v ."));
+    if (add) console.log(colors.cyan("git add -v ."));
     console.log(colors.cyan("git commit -m '" + commitMessage + "'"));
-    console.log(colors.cyan("git push origin HEAD"));
+    if (push) console.log(colors.cyan("git push origin HEAD"));
   } else {
     try {
       if (add) await git.add(".");
@@ -140,7 +140,7 @@ program
   .option("-t, --type <type>", "The commit type")
   .option("-s, --scope <scope>", "The commit scope")
   .option("-d, --desc <desc>", "The commit description")
-  .option("-D, --debug", "Enable debug info");
+  .option("-D, --dryrun", "Print the commands but don't execute them");
 
 program.version(package.version);
 

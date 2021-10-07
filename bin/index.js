@@ -93,8 +93,6 @@ function searchTypes(_answers, input) {
 }
 
 const runGitCommands = async (commitMessage, add, push) => {
-  console.log("add: ", add);
-  console.log("push: ", push);
   if (options.dryrun) {
     console.log(
       colors.white("The"),
@@ -115,6 +113,7 @@ const runGitCommands = async (commitMessage, add, push) => {
     try {
       if (add) console.log(colors.white("Adding files to be tracked..."));
       if (add) await git.add(".");
+      console.log(colors.white("Committing changes..."));
       await git.commit(commitMessage);
       if (push) console.log(colors.white("Pushing changes to remote..."));
       if (push) await git.push("origin", "HEAD");

@@ -93,6 +93,8 @@ function searchTypes(_answers, input) {
 }
 
 const runGitCommands = async (commitMessage, add, push) => {
+  console.log("add: ", add);
+  console.log("push: ", push);
   if (options.dryrun) {
     console.log(
       colors.white("The"),
@@ -105,17 +107,17 @@ const runGitCommands = async (commitMessage, add, push) => {
       colors.white("commands:")
     );
     if (add) console.log(colors.cyan("git add -v . && \\"));
-    console.log(colors.cyan("git commit -m '" + commitMessage + "' && \\"));
+    let gitCommitCmd = "git commit -m '" + commitMessage + "'";
+    if (push) gitCommitCmd += " && \\";
+    console.log(colors.cyan(gitCommitCmd));
     if (push) console.log(colors.cyan("git push origin HEAD"));
   } else {
     try {
-      if (add)
-        (await git.add(".")) &&
-          console.log(colors.white("Adding files to be tracked..."));
+      if (add) console.log(colors.white("Adding files to be tracked..."));
+      if (add) await git.add(".");
       await git.commit(commitMessage);
-      if (push)
-        (await git.push("origin", "HEAD")) &&
-          console.log(colors.white("Pushing changes to remote..."));
+      if (push) console.log(colors.white("Pushing changes to remote..."));
+      if (push) await git.push("origin", "HEAD");
     } catch (e) {
       console.log("error: ", e);
     }

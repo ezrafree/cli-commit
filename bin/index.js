@@ -94,7 +94,16 @@ function searchTypes(_answers, input) {
 
 const runGitCommands = async (commitMessage, add, push) => {
   if (options.dryrun) {
-    console.log(colors.white.bold("Dry Run:"));
+    console.log(
+      colors.white("The"),
+      colors.white.bold("--dryrun"),
+      colors.white("option was provided. No commands were executed this run.")
+    );
+    console.log(
+      colors.white("This command would have run the following"),
+      colors.white.bold("git"),
+      colors.white("commands:")
+    );
     if (add) console.log(colors.cyan("git add -v . && \\"));
     console.log(colors.cyan("git commit -m '" + commitMessage + "' && \\"));
     if (push) console.log(colors.cyan("git push origin HEAD"));

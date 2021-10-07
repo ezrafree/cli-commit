@@ -33,7 +33,7 @@ yarn build
 Then to install, copy the executable to someplace in your `$PATH`. For example:
 
 ```sh
-cp commit /usr/local/bin
+cp -v commit /usr/local/bin
 ```
 
 ## Usage
